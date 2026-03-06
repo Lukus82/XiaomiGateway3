@@ -1735,6 +1735,18 @@ DEVICES += [{
         BaseConv("idle_time", mi="2.p.1024"),
     ],
 }, {
+    19527: ["Xiaomi", "Smart TH Monitor 3", "XMWSDJ04MMC-3"],
+    "spec": [
+        # MIoT properties reported via miio properties_changed: siid=2
+        MathConv("temperature", "sensor", mi="2.p.1001", round=1),
+        MathConv("humidity", "sensor", mi="2.p.1002", round=0),
+        # optional battery property (if present from miot)
+        BaseConv("battery", "sensor", mi="2.p.1003", entity=ENTITY_LAZY),
+        # keep default command/stat entity
+        BaseConv("action", "sensor", entity=ENTITY_DISABLED),
+    ],
+    # "ttl": "6h",
+}, {
     # https://home.miot-spec.com/spec/xiaomi.sensor_occupy.03
     18051: ["Xiaomi", "Occupancy Sensor", "XMOSB01XS", "xiaomi.sensor_occupy.03"],
     "spec": [
